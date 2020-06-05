@@ -63,6 +63,8 @@ export const homePageQuery = graphql`
 }
 `
 const IndexPage = ({ data }) => {
+  const doc= data.prismic.allHomepages.edges[0]
+  if(!doc) return null
   const heroContent = data.prismic.allHomepages.edges[0].node.body[0];
   const callForActionGrid = data.prismic.allHomepages.edges[0].node.body[1];
   const priceContent = data.prismic.allHomepages.edges[0].node.body[2];

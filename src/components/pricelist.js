@@ -33,7 +33,7 @@ const PriceDescriptionContainer = styled.div`
 
 
 const PriceList = (props) => {
-    console.log(props.content.fields)
+    if(props.content.fields) return null
     return (
         <PriceListContainer>
             <RichText render={props.content.primary.section_title} />

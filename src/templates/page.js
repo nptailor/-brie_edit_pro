@@ -33,6 +33,8 @@ query PageQuery($id : String){
 
 
 const Page = (props) => {
+  const doc= props.data.prismic.allPages.edges[0]
+  if(!doc) return null
   const title = props.data.prismic.allPages.edges[0].node.page_title;
   const page_content = props.data.prismic.allPages.edges[0].node.content;
   return (

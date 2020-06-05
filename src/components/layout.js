@@ -85,11 +85,14 @@ a{
 const Main = styled.section`
 font-family:  Arial, Helvetica, sans-serif;
 `
-const Layout = ({ children }) => {
+const Layout = ({children}) => {
   return (
     <>
       <Header>
         <StaticQuery query={`${navigationQuery}`} render={(data) => {
+           const doc= data.prismic.allNavigations.edges[0]
+           if(!doc) return null
+           else{
           return (
             <>
               <Branding>
@@ -108,7 +111,7 @@ const Layout = ({ children }) => {
                 })}
               </NavLinks>
             </>
-          )
+          )}
         }} />
       </Header>
       <Main>{children}</Main>
