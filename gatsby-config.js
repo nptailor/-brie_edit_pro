@@ -5,6 +5,20 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-prismic-graphql`,
+      options: {
+        repositoryName: `auberdemo`,
+        accessToken: `MC5YdFk4cFJBQUFCMEFLVHhX.J--_vXDvv70O77-9fXkDPe-_vQ7vv73vv71wOW9z77-9EFbvv71G77-977-9Ge-_ve-_vUI5AO-_vQ`,
+        pages:[{
+          type:`Page`,
+          match: `/:uid`,
+          path:`/`,
+          component: require.resolve('./src/templates/page.js')
+        }]
+      },
+    },
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -27,8 +41,5 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
