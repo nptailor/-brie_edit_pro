@@ -1,5 +1,4 @@
 import React from 'react'
-import { RichText } from 'prismic-reactjs'
 import styled from 'styled-components'
 
 const HeroWrapper = styled.section`
@@ -40,7 +39,6 @@ text-align:center;
 const Hero = (props) => {
     console.log(props.content.primary.background_image.url)
     const homeTitle = props.content.primary.hero_title;
-    const homeContent = props.content.primary.hero_content;
 
     return (
         <HeroWrapper backgroundImage={props.content.primary.background_image.url}>

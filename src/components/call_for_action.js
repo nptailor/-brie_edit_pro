@@ -13,13 +13,14 @@ const CallForActionGrid = styled.section`
 
 const CallToActionBlock = styled.section`
     padding: 20px;
-    background-color: #eee;
     margin-bottom: 30px;
     margin-top: 30px;
     border-radius: 20px;
+    box-shadow:3px 3px 5px 6px #ccc;
+    border-top: 5px solid black;
 `
 
-const CallForACtionContent =styled.div`
+const CallForACtionContent = styled.div`
 display:flex;
  img{
      height: 100px;
@@ -32,22 +33,74 @@ display:flex;
   }
 `
 
+// const Button = styled.button`
+// display: inline-block;
+// width: 180px;
+// height: 60px;
+// cursor: pointer;
+// background: transparent;
+// border: 1px solid orange;
+// outline: none;
+// transition: 0.5s ease-in-out;
+// border-radius: 4px;
+  
+//  a{
+//      text-decoration: none;
+//  }
+//  &:hover{
+//     transition: 1s ease-in-out;
+//     background: orange;
+//     color: white;
+//     svg {
+//         stroke-dashoffset: -480;
+//       }
+
+//  }
+// `
+
 const Button = styled.button`
-background-color: orange;
-padding:10px;
-border-radius: 6px;
-color: white;
-display: inline-block;
-font-weight: 600;
-cursor: pointer;
- a{
-     text-decoration: none;
- }
- &:hover{
-     color: orange;
-     background-color: #eee;
-     border: solid 2px orange;
- }
+    border-radius: 4px;
+    background: transparent
+    border: none;
+    text-align: center;
+    border: 1px solid orange;
+    padding: 16px;
+    width: 220px;
+    transition: all 0.5s;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+    background-color: transparent;
+  
+    a{
+        text-decoration: none;
+        color: orange;
+    }
+
+  &:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;  
+    top: 14px;
+    right: -20px;
+    transition: 0.5s;
+    color: white;
+  }
+  
+  &:hover{
+    background-color:orange;
+    padding-right: 24px;
+    padding-left:8px;
+    a{
+        color: white;
+    }
+  }
+  
+  &:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
 `
 
 
@@ -57,7 +110,7 @@ const CallForAction = (props) => {
             <RichText render={props.content.primary.section_title} />
             {props.content.fields.map(data => {
                 return (
-                    <CallToActionBlock>
+                    <CallToActionBlock key={data.call_to_action_title}>
                         <CallForACtionContent>
                             <div>
                                 <RichText render={data.call_to_action_title} />
@@ -68,9 +121,10 @@ const CallForAction = (props) => {
                             </>
                         </CallForACtionContent>
                         <Button>
-                            <Link to={`/${data.call_to_action_button_link._meta.uid}`}>
+                            <span><Link to={`/${data.call_to_action_button_link._meta.uid}`}>
                                 {data.button_label}
-                            </Link>
+                            </Link></span>
+
                         </Button>
                     </CallToActionBlock>
                 )

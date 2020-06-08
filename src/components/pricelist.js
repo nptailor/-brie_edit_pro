@@ -16,10 +16,12 @@ display: flex;
   }
 `
 const PriceDescriptionContainer = styled.div`
- background-color: #eee;
- margin: 10px;
+ margin: 30px 10px 10px 10px;
  padding: 20px;
  border-radius: 6px;
+ border-top: 5px solid black;
+ box-shadow:3px 3px 5px 6px #ccc;
+ transition: 0.5s ease-in-out;
  .price{
     background-color: orange;
     text-align: center;
@@ -28,19 +30,25 @@ const PriceDescriptionContainer = styled.div`
     padding-top: 10px 
     padding-bottom: 30px;
  }
+ &:hover{
+    //  margin-top: 5px 10px 10px 10px;
+    background-color: black;
+    color: white;
+    border-top: 5px solid orange;
+ }
+
 `
 
 
 
 const PriceList = (props) => {
-    if(props.content.fields) return null
     return (
         <PriceListContainer>
             <RichText render={props.content.primary.section_title} />
             <Container>
                 {props.content.fields.map(data => {
                     return (
-                        <PriceDescriptionContainer>
+                        <PriceDescriptionContainer key={data.price_list_title}>
 
                             <RichText render={data.price_list_type} />
                             <RichText render={data.price_list_title} />

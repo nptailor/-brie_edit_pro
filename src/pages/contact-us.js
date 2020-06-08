@@ -27,23 +27,27 @@ export const query = graphql`
 
 const Form = styled.form`
 padding:10px;
-background-color: #eee;
 margin-top: 20px;
 `
 const Button = styled.button`
-background-color: orange;
-padding:10px;
-border-radius: 6px;
-color: white;
-font-weight: 600;
-cursor: pointer
 display: inline-block;
- &:hover{
-     color: orange;
-     background-color: #eee;
-     border: solid 2px orange;
+width: 180px;
+height: 60px;
+cursor: pointer;
+background: transparent;
+border: 1px solid orange;
+outline: none;
+transition: 0.3s;
+border-radius: 4px;
+  
+ a{
+     text-decoration: none;
  }
-
+ &:hover{
+    transition: 1s ease-in-out;
+    background: orange;
+    color: white;
+ }
 `
 
 const PageWrapper = styled.section`
@@ -62,20 +66,30 @@ h4{
 input{
   width:100%;
   border-radius: 6px;
-  height: 40px;
-  border: #eee;
+  height: 50px;
+  border: 5px solid orange;
+  transition: 0.2s ease-in-out;
+  padding:6px;
   &:focus{
-    outline: 2px solid #4DC5D6 ;
+    border: 1px solid orange ;
+  }
+  &:hover{
+    border: 1px solid orange ;
   }
 }
 
 textarea{
   width:100%;
   border-radius: 6px;
-  height: 80px;
-  border: #eee;
+  height: 90px;
+  border: 5px solid orange;
+  transition: 0.2s ease-in-out;
+  padding:6px;
   &:focus{
-    outline: 2px solid #4DC5D6 ;
+    border: 1px solid orange ;
+  }
+  &:hover{
+    border: 1px solid orange ;
   }
 }
 `
